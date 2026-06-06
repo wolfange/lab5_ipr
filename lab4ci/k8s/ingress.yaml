@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sales-ingress
+  namespace: lab5
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sales.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sales-service
+                port:
+                  number: 80
